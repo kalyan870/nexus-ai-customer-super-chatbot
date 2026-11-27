@@ -8,7 +8,7 @@
 
 NEXUS AI is a full-stack **AI Customer Super Chatbot** featuring multi-persona support (`Support Specialist`, `Technical Engineer`, `Billing & Refunds`, `Sales Advisor`), real-time order tracking cards (`ORD-1001`), CSAT feedback, autonomous ticket escalation, backend prompt/SQL security guardrails, and a Clerk/JWT RBAC Agent Triage Console.
 
-**[Open the live application →](https://nexus-ai-customer-super-chatbot.vercel.app)** · **[Cloudflare Workers →](https://nexus-ai-customer-super-chatbot.saragadamkalyan068-fdc.workers.dev)** · **[GitHub Pages →](https://kalyan870.github.io/nexus-ai-customer-super-chatbot/)**
+**[Open the live application →](https://nexus-ai-customer-super-chatbot.vercel.app)** · **[Cloudflare Workers →](https://nexus-ai-customer-super-chatbot.saragadamkalyan068-fdc.workers.dev)** · **[Firebase →](https://nexus-ai-chatbot-bcb66.web.app)** · **[GitHub Pages →](https://kalyan870.github.io/nexus-ai-customer-super-chatbot/)**
 
 ## Portfolio highlights
 
