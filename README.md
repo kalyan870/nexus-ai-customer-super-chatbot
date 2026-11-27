@@ -27,6 +27,9 @@ NEXUS AI is a full-stack **AI Customer Super Chatbot** featuring multi-persona s
 
 ## Live Output Screenshots
 
+### Cinematic Landing & Live Support Telemetry (Anime.js v4)
+![NEXUS Cinematic Landing](docs/images/00-cinematic-landing.png)
+
 ### Super Chatbot & Live Order Tracking Card
 ![NEXUS Super Chatbot Order Tracking](docs/images/01-super-chatbot-order.png)
 

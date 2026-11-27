@@ -1,16 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
   Bot, Send, Package, LifeBuoy, Shield, Plus, ThumbsUp, ThumbsDown,
-  Sparkles, MessageSquare, Search, CheckCircle2
+  MessageSquare, Search, Home
 } from 'lucide-react';
 import { api } from './services/api';
+import CinematicLanding from './components/CinematicLanding';
 import TicketModal from './components/TicketModal';
 import AgentConsole from './components/AgentConsole';
 
 const PERSONAS = ['Support Specialist', 'Technical Engineer', 'Billing & Refunds', 'Sales Advisor'];
 
 export default function App() {
-  const [view, setView] = useState('chat'); // 'chat' | 'console'
+  const [view, setView] = useState('landing'); // 'landing' | 'chat' | 'console'
   const [persona, setPersona] = useState(PERSONAS[0]);
   const [conversationId, setConversationId] = useState(null);
   const [conversations, setConversations] = useState([]);
@@ -86,6 +87,24 @@ export default function App() {
       suggestions: ['Track order ORD-1001', 'Show pricing plans', 'Create support ticket']
     }]);
   };
+
+  if (view === 'landing') {
+    return (
+      <>
+        <CinematicLanding
+          statusInfo={statusInfo}
+          onLaunchChat={() => setView('chat')}
+          onOpenTicket={() => { setView('chat'); setIsTicketOpen(true); }}
+          onOpenConsole={() => setView('console')}
+        />
+        <TicketModal
+          isOpen={isTicketOpen}
+          onClose={() => setIsTicketOpen(false)}
+          onCreated={(t) => setMessages(prev => [...prev, { id: `t-${t.id}`, sender: 'bot', text: `Support ticket **${t.id}** ("${t.subject}") is now open in our queue.` }])}
+        />
+      </>
+    );
+  }
 
   if (view === 'console') {
     return <AgentConsole onBack={() => setView('chat')} />;
@@ -178,6 +197,9 @@ export default function App() {
             )}
           </div>
           <div className="flex items-center gap-2">
+            <button onClick={() => setView('landing')} className="p-2 rounded-xl bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-300" title="Overview">
+              <Home className="w-3.5 h-3.5" />
+            </button>
             <button onClick={() => setIsTicketOpen(true)} className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-amber-600/20 text-amber-300 border border-amber-500/30 hover:bg-amber-600/30">
               <LifeBuoy className="w-3.5 h-3.5" /> Support Ticket
             </button>
