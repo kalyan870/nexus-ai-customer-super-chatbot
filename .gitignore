@@ -1,0 +1,10 @@
+node_modules/
+.env
+.env.local
+backend/.env
+backend/data/db.json
+frontend/dist/
+*.log
+
+.vercel
+.env*

@@ -1,0 +1,7 @@
+{
+  "name": "nexus-ai-customer-super-chatbot",
+  "compatibility_date": "2026-11-23",
+  "assets": {
+    "directory": "frontend/dist"
+  }
+}
