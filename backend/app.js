@@ -6,6 +6,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { config } from './config/env.js';
 import { createRateLimiter } from './middleware/rateLimit.js';
+import { securityGuardrails } from './middleware/guardrails.js';
 import { createAuthRouter } from './routes/auth.js';
 import { createChatRouter } from './routes/chat.js';
 import { createTicketsRouter } from './routes/tickets.js';
@@ -37,6 +38,7 @@ export function createApp(db, options = {}) {
 
   app.use(express.json({ limit: '2mb' }));
   app.use('/api', createRateLimiter({ windowMs: 60_000, max: options.apiRateLimitMax ?? 200 }));
+  app.use('/api', securityGuardrails(db));
 
   const FRONTEND_DIST = path.join(__dirname, '..', 'frontend', 'dist');
   if (fs.existsSync(FRONTEND_DIST)) {
